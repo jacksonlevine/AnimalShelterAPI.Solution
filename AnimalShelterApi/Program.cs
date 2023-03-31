@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AnimalShelterApiContext>(
@@ -25,20 +23,22 @@ builder.Services.AddApiVersioning(opt =>
                                                                     new HeaderApiVersionReader("x-api-version"),
                                                                     new MediaTypeApiVersionReader("x-api-version"));
                 });
-// Add ApiExplorer to discover versions
+
 builder.Services.AddVersionedApiExplorer(setup =>
 {
     setup.GroupNameFormat = "'v'VVV";
     setup.SubstituteApiVersionInUrl = true;
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+    {
+        c.ResolveConflictingActions(c=>c.Last());
+    }
+);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
