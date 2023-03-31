@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "CretaceousApi": {
+    "AnimalShelterApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
