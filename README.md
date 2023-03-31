@@ -24,13 +24,37 @@ This project shows how to use Asp.Net MVC/EF Core for an API.
 
 This project uses models along with routes defined in the controller to return json in response to multiple endpoints!
 
-This API has the following endpoints:
+This API has the following endpoints, assuming the website is hosted on localhost:5000:
 
-``
+* GET all animals
 
-``
+`localhost:5000/api/animals`
 
-``
+Parameters (all optional):
+
+* species (string)
+* name (string)
+* minimumAge (int)
+
+GET one animal by ID (replace {id} with animal id)
+
+`localhost:5000/api/animals/{id}`
+
+POST to create new animal in database:
+
+`localhost/api/animals`
+
+Include object literal in request body: for example:
+
+`{
+    "species": "Woolly Mammoth",
+    "name": "Matilda the Woolly Mammoth",
+    "age": 8
+}`
+
+NOTE: Do not include animalId, as this is assigned by the database.
+
+
 
 ``
 
