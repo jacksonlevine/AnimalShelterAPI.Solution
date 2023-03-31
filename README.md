@@ -26,6 +26,8 @@ This project uses models along with routes defined in the controller to return j
 
 This API has the following endpoints, assuming the website is hosted on localhost:5000:
 
+------------------------------------------------------------------------------------------
+
 * GET all animals
 
 `localhost:5000/api/animals`
@@ -36,11 +38,15 @@ Parameters (all optional):
 * name (string)
 * minimumAge (int)
 
-GET one animal by ID (replace {id} with animal id)
+------------------------------------------------------------------------------------------
+
+* GET one animal by ID (replace {id} with animal id)
 
 `localhost:5000/api/animals/{id}`
 
-POST to create new animal in database:
+------------------------------------------------------------------------------------------
+
+* POST to create new animal in database:
 
 `localhost/api/animals`
 
@@ -54,9 +60,22 @@ Include object literal in request body: for example:
 
 NOTE: Do not include animalId, as this is assigned by the database.
 
+------------------------------------------------------------------------------------------
 
+* PUT to update an existing animal
 
-``
+`localhost:5000/api/animals/{id}`
+
+Include object literal, including animalId, in request body: for example:
+
+`{
+    "animalId": 1
+    "species": "Woolly Mammoth",
+    "name": "Matilda the Woolly Mammoth",
+    "age": 8
+}`
+
+------------------------------------------------------------------------------------------
 
 ## How To Run This Project
 
