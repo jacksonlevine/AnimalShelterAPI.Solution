@@ -4,9 +4,10 @@ using AnimalShelterApi.Models;
 
 namespace AnimalShelterApi.Controllers
 {
-  [Route("api/[controller]")]
-  [ApiController]
   [ApiVersion("1.0")]
+  [ApiController]
+  [Route("api/[controller]")]
+  
   public class AnimalsController : ControllerBase
   {
     private readonly AnimalShelterApiContext _db;
@@ -16,7 +17,6 @@ namespace AnimalShelterApi.Controllers
       _db = db;
     }
 
-    // GET api/animals
     [HttpGet]
     public async Task<List<Animal>> Get(string species, string name, int minimumAge)
     {
@@ -40,11 +40,12 @@ namespace AnimalShelterApi.Controllers
       return await query.ToListAsync();
     }
 
-    // GET: api/Animals/5
+    [ApiVersion("1.2", Deprecated = true)]
     [HttpGet("{id}")]
     public async Task<ActionResult<Animal>> GetAnimal(int id)
     {
       Animal animal = await _db.Animals.FindAsync(id);
+
       if (animal == null)
       {
         return NotFound();
@@ -52,15 +53,16 @@ namespace AnimalShelterApi.Controllers
       return animal;
     }
 
-    // POST api/animals
     [HttpPost]
     public async Task<ActionResult<Animal>> Post(Animal animal)
     {
       _db.Animals.Add(animal);
+
       await _db.SaveChangesAsync();
+
       return CreatedAtAction(nameof(GetAnimal), new { id = animal.AnimalId }, animal);
     }
-    // PUT: api/Animals/5
+
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Animal animal)
     {
@@ -94,7 +96,7 @@ namespace AnimalShelterApi.Controllers
     {
       return _db.Animals.Any(e => e.AnimalId == id);
     }
-    // DELETE: api/Animals/5
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAnimal(int id)
     {
@@ -105,6 +107,7 @@ namespace AnimalShelterApi.Controllers
       }
 
       _db.Animals.Remove(animal);
+
       await _db.SaveChangesAsync();
 
       return NoContent();
