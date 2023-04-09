@@ -19,7 +19,7 @@ namespace AnimalShelterApi.Models
           new Animal { AnimalId = 3, Name = "Johnny", Species = "Shark", Age = 2 },
           new Animal { AnimalId = 4, Name = "Pip", Species = "Owl", Age = 4 },
           new Animal { AnimalId = 5, Name = "Maxwell", Species = "Rhino", Age = 22 },
-          new Animal { AnimalId = 5, Name = "Tony", Species = "Rhino", Age = 24 }
+          new Animal { AnimalId = 6, Name = "Tony", Species = "Rhino", Age = 24 }
         );
     }
   }
