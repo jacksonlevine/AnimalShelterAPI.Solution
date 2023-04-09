@@ -1,4 +1,4 @@
-# Pierres Treats
+# Animal Shelter API
 
 #### By Jackson Levine
 
