@@ -46,8 +46,6 @@ Parameters (all optional):
 
 * GET one animal by ID (This feature is only available in deprecated version 1.2 of this api.)
 
-In order to use this request, make sure to add the header "x-api-version" to your request, with the value "1.2"
-
 (replace {id} with animal id)
 
 `localhost:5000/api/animals/{id}`
